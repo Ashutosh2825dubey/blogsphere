@@ -1,9 +1,9 @@
 <!DOCTYPE html>
 <html lang="en">
-<%- include('./partials/nav.ejs') %>
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Blog Sphere | <%= title %></title>
   <style>
     .blogs {
       display: flex;
@@ -30,16 +30,12 @@
   </style>
 </head>
 <body>
-  <!-- <% const name='mario' %> -->
-  <!-- JavaScript that runs on the server; it's like PHP injecting in HTML -->
-  <!-- Include file like nav header footer so when changed, only one file changes all will be changed automatically -->
-  <!-- Here, the - sign does not exclude the special character -->
+  <%- include('./partials/nav.ejs') %>
+  
   <div class="blogs content">
     <h2>BLOGS</h2>
     <% if(blogs.length > 0) { %>
-      <!-- If condition writing JavaScript in Node.js -->
       <% blogs.forEach(blog => { %>
-        <!-- For each to loop through the array; blog is automatically connected with that defined in the template class -->
         <a class="single" href="/blogs/<%= blog._id %>">
           <h3 class="title"><%= blog.title %></h3>
           <p class="snippet"><%= blog.snippet %></p>
@@ -49,6 +45,7 @@
       <p>No blogs to display</p>
     <% } %>
   </div>
+  
   <%- include('./partials/footer.ejs') %>
 </body>
 </html>

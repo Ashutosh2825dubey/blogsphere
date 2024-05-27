@@ -1,77 +1,66 @@
+<!DOCTYPE html>
 <html lang="en">
-    <%- include('./partials/nav.ejs') %>
-    <head>
-        <style>
-            body {
-  display: flex;
-  flex-direction: column;
-  min-height: 100vh;
-  margin: 0; /* Remove default margin */
-}
-
-.blogs.content {
-  display: flex;
-  justify-content: center; /* Align content horizontally in the center */
-  align-items: center; /* Align content vertically in the center */
-  height: 100vh; /* Make the content div fill the entire viewport vertically */
-}
-
-form {
-  width: 80%; /* Set form width */
-}
-
-label {
-  display: block; /* Make labels appear on separate lines */
-  margin-bottom: 5px; /* Add some space below each label */
-}
-
-input[type="text"],
-textarea {
-  width: 100%; /* Make text inputs and textareas fill the entire width of the form */
-  padding: 8px; /* Add some padding */
-  margin-bottom: 10px; /* Add some space below each input */
-  border: 1px solid #ccc; /* Add a border */
-  border-radius: 4px; /* Add border radius */
-}
-
-button {
-  /* Adjust the width and height to make the button a small box */
-  width: auto;
-  height: auto;
-  
-  padding: 10px 20px; /* Add padding to the button */
-  background-color: #117A65;
-  color: white;
-  border: none;
-  border-radius: 4px;
-  cursor: pointer;
-  display: inline-block; /* Make the button a block-level element */
-}
-
-button:hover {
-  background-color: #0E5749;
-}
-
-        </style>
-    </head>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Blog Sphere | <%= title %></title>
+  <style>
+    body {
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+      margin: 0;
+    }
+    .blogs.content {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+    form {
+      width: 80%;
+    }
+    label {
+      display: block;
+      margin-bottom: 5px;
+    }
+    input[type="text"],
+    textarea {
+      width: 100%;
+      padding: 8px;
+      margin-bottom: 10px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+    }
+    button {
+      width: auto;
+      height: auto;
+      padding: 10px 20px;
+      background-color: #117A65;
+      color: white;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      display: inline-block;
+    }
+    button:hover {
+      background-color: #0E5749;
+    }
+  </style>
+</head>
 <body>
-
-    <div class="'blogs content">
-        <!-- create.ejs -->
-<form action="/blogs" method="POST">
-    <label for="title">Title:</label>
-    <input type="text" id="title" name="title" required>
-
-    <label for="snippet">Snippet:</label>
-    <input type="text" id="snippet" name="snippet" required>
-
-    <label for="body">Body:</label>
-    <textarea id="body" name="body" required></textarea>
-
-    <button type="submit">Add Blog</button>
-</form>
-
-        </form>
-    </div>
+  <%- include('./partials/nav.ejs') %>
+  <div class="blogs content">
+    
+    <form action="/blogs/create_get" method="POST">
+      <label for="title">Title:</label>
+      <input type="text" id="title" name="title" required>
+      <label for="snippet">Snippet:</label>
+      <input type="text" id="snippet" name="snippet" required>
+      <label for="body">Body:</label>
+      <textarea id="body" name="body" required></textarea>
+      <button type="submit">Add Blog</button>
+    </form>
+  </div>
 </body>
 </html>

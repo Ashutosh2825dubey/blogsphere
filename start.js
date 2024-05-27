@@ -3,14 +3,20 @@ const mongoose = require('mongoose');
 const morgan = require('morgan');
 const ejs = require('ejs');
 const proroutes=require('./routes/blog routes');
+require('dotenv').config();
 //express app setup
 const app=express();
 //database connection mongodb
-const dbURI='mongodb+srv://shaun:amandubey123@nodetuts.eswobdi.mongodb.net/node-tuts?retryWrites=true&w=majority';
-mongoose.connect(dbURI)//connect to database asynchronous task it is returns a promise
-.then((result)=>app.listen(3000))
-.catch((err)=>{
-    console.log('Failed to connect to Database');
+const PORT = process.env.PORT ||3000 ;
+const dbURI= process.env.mongodbURI;
+mongoose.connect(dbURI,{ useNewUrlParser: true, useUnifiedTopology: true })//connect to database asynchronous task it is returns a promise
+.then(() => {
+    app.listen(PORT, () => {
+        console.log(`Server is running on http://localhost:${PORT}`);
+    });
+})
+.catch((err) => {
+    console.error('Failed to connect to MongoDB:', err);
 });
 app.set('view engine', 'ejs');
 app.use(express.static('public'));
