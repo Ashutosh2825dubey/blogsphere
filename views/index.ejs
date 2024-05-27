@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<%- include('./partials/nav.ejs') %>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <style>
+    .blogs {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+    }
+    .blogs .single {
+      width: 80%;
+      margin: 10px 0;
+      padding: 15px;
+      border: 1px solid #ddd;
+      border-radius: 5px;
+      background-color: #f9f9f9;
+    }
+    .blogs .title {
+      font-size: 24px;
+      margin-bottom: 10px;
+    }
+    .blogs .snippet {
+      font-size: 16px;
+      color: #555;
+    }
+  </style>
+</head>
+<body>
+  <!-- <% const name='mario' %> -->
+  <!-- JavaScript that runs on the server; it's like PHP injecting in HTML -->
+  <!-- Include file like nav header footer so when changed, only one file changes all will be changed automatically -->
+  <!-- Here, the - sign does not exclude the special character -->
+  <div class="blogs content">
+    <h2>BLOGS</h2>
+    <% if(blogs.length > 0) { %>
+      <!-- If condition writing JavaScript in Node.js -->
+      <% blogs.forEach(blog => { %>
+        <!-- For each to loop through the array; blog is automatically connected with that defined in the template class -->
+        <a class="single" href="/blogs/<%= blog._id %>">
+          <h3 class="title"><%= blog.title %></h3>
+          <p class="snippet"><%= blog.snippet %></p>
+        </a>
+      <% }) %>
+    <% } else { %>
+      <p>No blogs to display</p>
+    <% } %>
+  </div>
+  <%- include('./partials/footer.ejs') %>
+</body>
+</html>
