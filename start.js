@@ -4,7 +4,7 @@ const cookieParser = require('cookie-parser');
 const app = express();
 const authRoutes = require('./routes/authroutes.js');
 const blogRoutes = require('./routes/blogRoutes.js');
-const { requireAuth, checkUser } = require('./middleware/authMiddleware');
+const { requireAuth, checkUser } = require('./middleware/authMiddleware.js');
 require('dotenv').config();
 
 // Middleware
@@ -21,7 +21,7 @@ const dbURI = process.env.DBCONNECT;
 mongoose.connect(dbURI, { useNewUrlParser: true, useUnifiedTopology: true })
   .then((result) => {
     app.listen(8000, () => {
-      console.log('Server is running on port 3000');
+      console.log('Server is running on port 8000');
     });
   })
   .catch((err) => console.log(err));
